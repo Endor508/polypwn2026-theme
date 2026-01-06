@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
-  <title>{{ title or Configs.ctf_name }}</title>
+  <title>{{ title or Configs.ctf_name }} - Hidden Laboratory</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="{{ Configs.ctf_small_icon }}" type="image/x-icon">
@@ -38,8 +38,34 @@
   </script>
 
   {{ Configs.theme_header }}
+
+  <style>
+    /* Laboratory ambient particles */
+    .lab-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(117, 73, 219, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(117, 73, 219, 0.8);
+    }
+  </style>
 </head>
-<body>
+<body class="lab-scanlines" data-lab-theme="hidden-laboratory">
+  <!-- Laboratory ambient particles background -->
+  <div class="lab-particles" id="labParticles"></div>
+
 {% include "components/navbar.html" %}
 
 <main role="main">
@@ -49,13 +75,36 @@
 
 {% include "components/snackbar.html" %}
 
-<footer class="footer">
+<footer class="footer" style="position: relative; z-index: 2; background: rgba(20, 15, 35, 0.95); border-top: 1px solid #5e72dc; padding: 20px 0; margin-top: 50px;">
   <div class="container text-center">
-    <a href="https://ctfd.io" class="text-secondary">
-      <small class="text-muted">
-        {% trans %}Powered by CTFd{% endtrans %}
+    <div style="margin-bottom: 10px;">
+      <!-- If the player is authenticated, show clearance badge -->
+      {% if User.name %}
+      <span class="lab-badge clearance-high" style="font-size: 0.75em;" >
+        SECTOR-7 | CLEARANCE LEVEL: AUTHENTICATED
+      </span>
+      {% else %}
+      <span class="lab-badge clearance-low" style="font-size: 0.75em;" >
+        SECTOR-7 | CLEARANCE LEVEL: GUEST
+      </span>
+      {% endif %}
+
+    </div>
+    <div style="line-height: 1.5em">
+      <a href="https://ctfd.io" style="color: #7549db; text-decoration: none; transition: all 0.3s ease;">
+        <small style="color: #d1c4e9; letter-spacing: 1px;">
+          {% trans %}Powered by CTFd{% endtrans %} | <span style="color: #7549db;">LABORATORY INTERFACE v2.1.5</span>
+        </small>
+      </a>
+      <br>
+      <small style="color: #d1c4e9; letter-spacing: 1px;">
+        <span style="color: #7549db;">Thème par </span>@Pollux
       </small>
-    </a>
+    </div>
+    <div style="margin-top: 8px; font-size: 0.7em; color: #5e72dc; letter-spacing: 2px;">
+      <span class="lab-indicator active" style="vertical-align: middle;"></span>
+      SYSTÈME OPÉRATIONNEL
+    </div>
   </div>
 </footer>
 
@@ -63,6 +112,75 @@
 
 {% block scripts %}
   {{ Assets.js("assets/js/page.js") }}
+
+  <script>
+    // Laboratory particle system
+    (function() {
+      const particlesContainer = document.getElementById('labParticles');
+      const particleCount = 30;
+
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+
+        const duration = 3 + Math.random() * 4;
+        const delay = Math.random() * 2;
+        const tx = (Math.random() - 0.5) * 200;
+        const ty = (Math.random() - 0.5) * 200;
+
+        particle.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+
+        particlesContainer.appendChild(particle);
+      }
+
+      // Add keyframes for particle animation
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes float {
+          0%, 100% {
+            transform: translate(0, 0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 0.6;
+          }
+          90% {
+            opacity: 0.6;
+          }
+          50% {
+            transform: translate(var(--tx), var(--ty));
+            opacity: 1;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+
+      for (let i = 0; i < particleCount; i++) {
+        createParticle();
+      }
+    })();
+
+    // Laboratory flicker effect on load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.style.animation = 'lab-flicker 0.5s ease-in-out';
+
+      const flickerStyle = document.createElement('style');
+      flickerStyle.textContent = `
+        @keyframes lab-flicker {
+          0%, 100% { opacity: 1; }
+          10% { opacity: 0.8; }
+          20% { opacity: 0.9; }
+          30% { opacity: 0.7; }
+          40% { opacity: 1; }
+        }
+      `;
+      document.head.appendChild(flickerStyle);
+    });
+  </script>
 {% endblock %}
 
 {{ Plugins.scripts }}

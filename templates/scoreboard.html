@@ -3,12 +3,18 @@
 {% block content %}
   <div class="jumbotron">
     <div class="container">
-      <h1>
-        {% trans %}Scoreboard{% endtrans %}
+      <h1 data-text="LEADERBOARD">
+        {% trans %}LEADERBOARD{% endtrans %}
       </h1>
+      <p style="margin-top: 15px; color: #b8e6e0; text-transform: uppercase; letter-spacing: 2px;">
+        LABORATORY RESEARCH RANKINGS
+      </p>
+      <div class="lab-status">
+        LIVE DATA
+      </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container" style="position: relative; z-index: 2;">
     {% include "components/errors.html" %}
 
     <div id="score-graph" class="align-items-center" :class="{'d-flex': show, 'd-none': !show}" x-data="ScoreboardDetail" x-ref="scoregraph" @bracket-change.window="activeBracket=$event.detail; update();">

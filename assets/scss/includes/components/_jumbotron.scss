@@ -1,4 +1,4 @@
-/* Jumbotron styles
+/* Jumbotron styles - Laboratory Theme
 -------------------------------------------------- */
 
 // Move down content because we have a fixed navbar that is 3.5rem tall
@@ -7,12 +7,112 @@ main {
 }
 
 .jumbotron {
+  position: relative;
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   text-align: center;
+  background: linear-gradient(135deg, rgba(20, 15, 35, 0.95), rgba(75, 50, 130, 0.8));
+  color: #b8e6e0;
+  border: 1px solid #5e72dc;
+  border-left: 4px solid #7549db;
+  border-right: 4px solid #7549db;
+  box-shadow:
+    0 0 30px rgba(117, 73, 219, 0.2),
+    inset 0 0 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 
-  background-color: var(--bs-dark);
-  color: var(--bs-white);
+  // Laboratory grid overlay
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(rgba(117, 73, 219, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(117, 73, 219, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // Animated scan line
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(117, 73, 219, 0.8),
+      transparent);
+    animation: scan-line 3s linear infinite;
+    z-index: 2;
+  }
+
+  h1, h2, h3 {
+    position: relative;
+    z-index: 3;
+    color: #7549db;
+    text-shadow:
+      0 0 10px rgba(117, 73, 219, 0.5),
+      0 0 20px rgba(117, 73, 219, 0.3);
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    position: relative;
+    z-index: 3;
+    color: #b8e6e0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  // Laboratory status indicator
+  .lab-status {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #7549db;
+    border-radius: 20px;
+    color: #7549db;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(117, 73, 219, 0.3);
+
+    &::before {
+      content: "●";
+      margin-right: 8px;
+      color: #916DE2;
+      animation: pulse-status 2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(500px);
+  }
+}
+
+@keyframes pulse-status {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px rgba(145, 109, 226, 0.8);
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 5px rgba(145, 109, 226, 0.5);
+  }
 }
 
 @media (min-width: 576px) {

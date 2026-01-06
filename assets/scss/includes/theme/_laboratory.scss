@@ -1,0 +1,344 @@
+/* Hidden Laboratory Theme - Special Effects
+-------------------------------------------------- */
+
+// Laboratory container panels
+.lab-panel {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #7549db, #916DE2, #3800ffc7, #7549db);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+  }
+
+  &:hover::before {
+    opacity: 0.2;
+  }
+}
+
+// Laboratory warning indicators
+.lab-warning {
+  position: relative;
+  padding-left: 30px;
+
+  &::before {
+    content: "⚠";
+    position: absolute;
+    left: 5px;
+    color: #ffaa00;
+    font-size: 1.2em;
+    animation: pulse-warning 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-warning {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(255, 170, 0, 0.5);
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 15px rgba(255, 170, 0, 0.8);
+  }
+}
+
+// Laboratory status indicators
+.lab-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  animation: pulse-indicator 2s ease-in-out infinite;
+
+  &.active {
+    background: #916DE2;
+    box-shadow: 0 0 10px rgba(145, 109, 226, 0.8);
+  }
+
+  &.inactive {
+    background: #666;
+    animation: none;
+  }
+
+  &.danger {
+    background: #ff3366;
+    box-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+  }
+}
+
+@keyframes pulse-indicator {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+// Glitch effect for headers
+.lab-glitch {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  &::before {
+    color: #ff3366;
+    animation: glitch-1 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  }
+
+  &::after {
+    color: #7549db;
+    animation: glitch-2 3s infinite;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  }
+
+  &:hover::before,
+  &:hover::after {
+    opacity: 0.8;
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translate(-2px, 2px);
+  }
+  66% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 100% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translate(2px, -2px);
+  }
+  66% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+// Data terminal effect
+.lab-terminal {
+  font-family: 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid #7549db;
+  border-radius: 4px;
+  padding: 15px;
+  color: #916DE2;
+  box-shadow:
+    inset 0 0 20px rgba(117, 73, 219, 0.1),
+    0 0 20px rgba(0, 0, 0, 0.5);
+
+  &::before {
+    content: "> ";
+    color: #7549db;
+  }
+}
+
+// Holographic border effect
+.lab-hologram {
+  position: relative;
+  border: 1px solid transparent;
+  background: linear-gradient(rgba(30, 25, 55, 0.85), rgba(30, 25, 55, 0.85)) padding-box,
+              linear-gradient(135deg, #7549db, #916DE2, #5e72dc) border-box;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+      transparent 30%,
+      rgba(117, 73, 219, 0.1) 50%,
+      transparent 70%);
+    pointer-events: none;
+    animation: hologram-scan 3s linear infinite;
+  }
+}
+
+@keyframes hologram-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+// Laboratory access badge
+.lab-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  background: rgba(117, 73, 219, 0.1);
+  border: 1px solid #7549db;
+  border-radius: 3px;
+  color: #7549db;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(117, 73, 219, 0.3);
+
+  &.clearance-high {
+    border-color: #ff3366;
+    color: #ff3366;
+    background: rgba(255, 51, 102, 0.1);
+    box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+  }
+
+  &.clearance-medium {
+    border-color: #ffaa00;
+    color: #ffaa00;
+    background: rgba(255, 170, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
+  }
+
+  &.clearance-low {
+    border-color: #916DE2;
+    color: #916DE2;
+    background: rgba(145, 109, 226, 0.1);
+    box-shadow: 0 0 10px rgba(145, 109, 226, 0.3);
+  }
+}
+
+// Scan lines effect
+.lab-scanlines {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// Energy field effect
+.lab-energy-field {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg,
+      transparent 25%,
+      rgba(117, 73, 219, 0.4) 25%,
+      rgba(117, 73, 219, 0.4) 50%,
+      transparent 50%,
+      transparent 75%,
+      rgba(117, 73, 219, 0.4) 75%);
+    background-size: 20px 20px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: energy-flow 1s linear infinite;
+  }
+}
+
+@keyframes energy-flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
+  }
+}
+
+// Laboratory grid background
+.lab-grid {
+  background-image:
+    linear-gradient(rgba(117, 73, 219, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(117, 73, 219, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+// Contamination warning
+.lab-contamination {
+  animation: contamination-blink 1s ease-in-out infinite;
+}
+
+@keyframes contamination-blink {
+  0%, 49%, 51%, 100% {
+    background: rgba(255, 51, 102, 0.1);
+    border-color: #ff3366;
+  }
+  50% {
+    background: rgba(255, 51, 102, 0.3);
+    border-color: #ff6699;
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+  }
+}
+
+.typewriter {
+  font-family: 'Courier New', Courier, monospace; /* Monospaced font is key */
+  display: inline-block;
+  overflow: hidden; /* Ensures the text is hidden until typed */
+  border-right: .15em solid orange; /* The blinking cursor */
+  white-space: nowrap; /* Keeps the text on a single line */
+  margin: 0 auto;
+  letter-spacing: .10em;
+
+  /* Animation:
+     typing (duration, timing-function, delay, iteration-count)
+     blink-caret (duration, timing-function, iteration-count) */
+  animation:
+          typing 3.5s steps(40, end),
+          blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
