@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% if request.path == "/" %}
+    {% include "homepage.html" %}
+  {% else %}
   <div class="container">
     {{ content | safe }}
   </div>
+  {% endif %}
 {% endblock %}
 
 {% block scripts %}

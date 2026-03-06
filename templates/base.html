@@ -67,6 +67,28 @@
     .footer-link:hover {
       text-decoration: underline !important;
     }
+
+    /* Animation kill-switch */
+    body.no-anim *,
+    body.no-anim *::before,
+    body.no-anim *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    #anim-toggle {
+      background: none;
+      border: 1px solid #5e72dc;
+      border-radius: 4px;
+      color: #5e72dc;
+      cursor: pointer;
+      font-size: 0.7em;
+      letter-spacing: 2px;
+      padding: 3px 8px;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+    #anim-toggle:hover { border-color: #7549db; color: #7549db; }
   </style>
 </head>
 <body class="lab-scanlines" data-lab-theme="hidden-laboratory">
@@ -82,7 +104,7 @@
 
 {% include "components/snackbar.html" %}
 
-<footer class="footer" style="position: relative; z-index: 2; background: rgba(20, 15, 35, 0.95); border-top: 1px solid #5e72dc; padding: 20px 0; margin-top: 50px;">
+<footer style="position: relative; z-index: 2; background: rgba(20, 15, 35, 0.95); border-top: 1px solid #5e72dc; padding: 20px 0; margin-top: 50px;">
   <div class="container text-center">
     <div style="margin-bottom: 10px;">
       <!-- If the player is authenticated, show clearance badge -->
@@ -111,6 +133,8 @@
     <div style="margin-top: 8px; font-size: 0.7em; color: #5e72dc; letter-spacing: 2px;">
       <span class="lab-indicator active" style="vertical-align: middle;"></span>
       SYSTÈME OPÉRATIONNEL
+      &nbsp;·&nbsp;
+      <button id="anim-toggle" aria-label="Toggle animations"></button>
     </div>
   </div>
 </footer>
@@ -120,7 +144,36 @@
 {% block scripts %}
   {{ Assets.js("assets/js/page.js") }}
 
-  <script>
+  
+{% endblock %}
+
+<script>
+    // Animation toggle (cookie-based)
+    (function() {
+      var COOKIE = 'lab-no-anim=1';
+      var noAnim = document.cookie.split(';').some(function(c) { return c.trim() === COOKIE; });
+      var btn = document.getElementById('anim-toggle');
+
+      function apply(disabled) {
+        document.body.classList.toggle('no-anim', disabled);
+        if (btn) btn.textContent = disabled ? 'ANIMATIONS: OFF' : 'ANIMATIONS: ON';
+      }
+
+      apply(noAnim);
+
+      if (btn) {
+        btn.addEventListener('click', function() {
+          var isOff = document.body.classList.contains('no-anim');
+          if (isOff) {
+            document.cookie = 'lab-no-anim=; Max-Age=0; path=/';
+          } else {
+            document.cookie = 'lab-no-anim=1; Max-Age=31536000; path=/';
+          }
+          apply(!isOff);
+        });
+      }
+    })();
+
     // Laboratory particle system
     (function() {
       const particlesContainer = document.getElementById('labParticles');
@@ -166,13 +219,16 @@
       `;
       document.head.appendChild(style);
 
-      for (let i = 0; i < particleCount; i++) {
-        createParticle();
+      if (!document.body.classList.contains('no-anim')) {
+        for (let i = 0; i < particleCount; i++) {
+          createParticle();
+        }
       }
     })();
 
     // Laboratory flicker effect on load
     document.addEventListener('DOMContentLoaded', function() {
+      if (document.body.classList.contains('no-anim')) return;
       document.body.style.animation = 'lab-flicker 0.5s ease-in-out';
 
       const flickerStyle = document.createElement('style');
@@ -188,7 +244,6 @@
       document.head.appendChild(flickerStyle);
     });
   </script>
-{% endblock %}
 
 {{ Plugins.scripts }}
 
