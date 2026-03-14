@@ -5,7 +5,7 @@
   --ink:#e9ecff;
   --mut:#b7bce6;
   --neo:#8b5cf6;
-  --neo2:#22d3ee;
+  --neo2:#5822ee;
   --ok:#34d399;
   --warn:#fbbf24;
   --danger:#fb7185;
@@ -17,7 +17,7 @@
   color:var(--ink);
   background:
     radial-gradient(1200px 600px at 15% 10%, rgba(139,92,246,.22), transparent 60%),
-    radial-gradient(900px 500px at 85% 20%, rgba(34,211,238,.18), transparent 55%),
+    radial-gradient(900px 500px at 85% 20%, rgba(139,92,246,.18), transparent 55%),
     radial-gradient(900px 500px at 50% 95%, rgba(139,92,246,.12), transparent 60%),
     linear-gradient(180deg, var(--bg0), var(--bg1));
   border-radius: 18px;
@@ -39,7 +39,7 @@
 .polypwn-wrap:after{
   content:"";
   position:absolute; inset:-40% 0 0 0;
-  background: linear-gradient(180deg, transparent, rgba(34,211,238,.08), transparent);
+  background: linear-gradient(180deg, transparent, rgba(139,92,246,.08), transparent);
   transform: translateY(-40%);
   animation: scan 5.5s linear infinite;
   pointer-events:none;
@@ -107,7 +107,7 @@
 .badge-pill .chip{
   width:8px; height:8px; border-radius:999px;
   background: var(--neo2);
-  box-shadow: 0 0 16px rgba(34,211,238,.45);
+  box-shadow: 0 0 16px rgba(139,92,246,.45);
 }
 
 /* big countdown block */
@@ -117,7 +117,7 @@
   padding: 14px 14px 12px;
   background: rgba(0,0,0,.22);
   border: 1px solid rgba(251,113,133,.25);
-  box-shadow: 0 0 0 1px rgba(34,211,238,.10) inset, 0 16px 40px rgba(0,0,0,.35);
+  box-shadow: 0 0 0 1px rgba(139,92,246,.10) inset, 0 16px 40px rgba(0,0,0,.35);
   position:relative;
   overflow:hidden;
 }
@@ -126,7 +126,7 @@
   position:absolute; inset:0;
   background:
     radial-gradient(900px 220px at 10% 20%, rgba(251,113,133,.16), transparent 60%),
-    radial-gradient(900px 220px at 90% 30%, rgba(34,211,238,.12), transparent 55%);
+    radial-gradient(900px 220px at 90% 30%, rgba(139,92,246,.12), transparent 55%);
   pointer-events:none;
 }
 .countdown-top{
@@ -172,7 +172,7 @@
 }
 .tcell{
   background: rgba(16,18,42,.55);
-  border: 1px solid rgba(34,211,238,.18);
+  border: 1px solid rgba(139,92,246,.18);
   border-radius: 14px;
   padding: 12px 12px 10px;
   text-align:center;
@@ -182,7 +182,7 @@
   font-weight:900;
   letter-spacing:.06em;
   font-size: clamp(22px, 3.8vw, 34px);
-  text-shadow: 0 0 14px rgba(34,211,238,.20);
+  text-shadow: 0 0 14px rgba(139,92,246,.20);
 }
 .tlab{
   margin-top:4px;
@@ -199,11 +199,11 @@
   padding: 11px 14px; border-radius: 12px;
   font-weight:800;
   border: 1px solid rgba(255,255,255,.10);
-  background: linear-gradient(90deg, rgba(139,92,246,.24), rgba(34,211,238,.18));
+  background: linear-gradient(90deg, rgba(139,92,246,.24), rgba(139,92,246,.18));
   box-shadow: 0 10px 26px rgba(0,0,0,.35);
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.btn-neo:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.45); border-color: rgba(34,211,238,.35); }
+.btn-neo:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.45); border-color: rgba(139,92,246,.35); }
 .btn-ghost{
   display:inline-flex; align-items:center; gap:10px;
   padding: 11px 14px; border-radius: 12px;
@@ -213,7 +213,7 @@
   background: rgba(0,0,0,.20);
   transition: transform .15s ease, border-color .15s ease;
 }
-.btn-ghost:hover{ transform: translateY(-1px); border-color: rgba(34,211,238,.45); }
+.btn-ghost:hover{ transform: translateY(-1px); border-color: rgba(139,92,246,.45); }
 
 /* cards grid */
 .grid{
@@ -239,7 +239,7 @@
   position:absolute; inset:0;
   border-radius: 16px;
   padding:1px;
-  background: linear-gradient(135deg, rgba(139,92,246,.55), rgba(34,211,238,.35), rgba(139,92,246,.12));
+  background: linear-gradient(135deg, rgba(139,92,246,.55), rgba(139,92,246,.35), rgba(139,92,246,.12));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -278,7 +278,7 @@
   border-radius: 14px;
   padding: 12px 12px 10px;
   background: rgba(0,0,0,.18);
-  border: 1px solid rgba(34,211,238,.16);
+  border: 1px solid rgba(139,92,246,.16);
 }
 .pbox .ptop{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
@@ -519,7 +519,6 @@
 <script>
 (function () {
   try {
-    // Countdown target: 21 March 2026 08:00 Montréal
     var target = new Date("2026-03-21T08:00:00-04:00").getTime();
 
     var dEl = document.getElementById("cd-days");
@@ -556,7 +555,6 @@
 
     if (dEl && hEl && mEl && sEl) tick();
 
-    // Simple i18n toggle (FR/EN) + rules switch
     var dict = {
       fr: {
         subtitle: "Compétition de cybersécurité en présentiel, organisée par PolyCyber à Polytechnique Montréal.",
