@@ -5,7 +5,7 @@
   --ink:#e9ecff;
   --mut:#b7bce6;
   --neo:#8b5cf6;
-  --neo2:#5822ee;
+  --neo2:#22d3ee;
   --ok:#34d399;
   --warn:#fbbf24;
   --danger:#fb7185;
@@ -17,7 +17,7 @@
   color:var(--ink);
   background:
     radial-gradient(1200px 600px at 15% 10%, rgba(139,92,246,.22), transparent 60%),
-    radial-gradient(900px 500px at 85% 20%, rgba(139,92,246,.18), transparent 55%),
+    radial-gradient(900px 500px at 85% 20%, rgba(34,211,238,.18), transparent 55%),
     radial-gradient(900px 500px at 50% 95%, rgba(139,92,246,.12), transparent 60%),
     linear-gradient(180deg, var(--bg0), var(--bg1));
   border-radius: 18px;
@@ -39,7 +39,7 @@
 .polypwn-wrap:after{
   content:"";
   position:absolute; inset:-40% 0 0 0;
-  background: linear-gradient(180deg, transparent, rgba(139,92,246,.08), transparent);
+  background: linear-gradient(180deg, transparent, rgba(34,211,238,.08), transparent);
   transform: translateY(-40%);
   animation: scan 5.5s linear infinite;
   pointer-events:none;
@@ -47,6 +47,42 @@
 @keyframes scan { to { transform: translateY(140%);} }
 
 .hero{ position:relative; padding: 4px 10px 10px; }
+.kicker{
+  display:flex; gap:10px; align-items:center; justify-content:space-between;
+  color:var(--mut);
+  font-size:.92rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+}
+.kicker-left{ display:inline-flex; gap:10px; align-items:center; }
+.kicker .dot{
+  width:10px; height:10px; border-radius:999px;
+  background: radial-gradient(circle at 30% 30%, var(--neo2), var(--neo));
+  box-shadow: 0 0 20px rgba(34,211,238,.35);
+}
+
+.lang{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+}
+.lang button{
+  appearance:none;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  color: var(--ink);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight:800;
+  font-size:.82rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.lang button.active{
+  border-color: rgba(34,211,238,.45);
+  box-shadow: 0 0 0 1px rgba(34,211,238,.12) inset;
+}
+
 .title{
   margin:10px 0 6px;
   font-weight:900;
@@ -71,7 +107,7 @@
 .badge-pill .chip{
   width:8px; height:8px; border-radius:999px;
   background: var(--neo2);
-  box-shadow: 0 0 16px rgba(139,92,246,.45);
+  box-shadow: 0 0 16px rgba(34,211,238,.45);
 }
 
 /* big countdown block */
@@ -81,7 +117,7 @@
   padding: 14px 14px 12px;
   background: rgba(0,0,0,.22);
   border: 1px solid rgba(251,113,133,.25);
-  box-shadow: 0 0 0 1px rgba(139,92,246,.10) inset, 0 16px 40px rgba(0,0,0,.35);
+  box-shadow: 0 0 0 1px rgba(34,211,238,.10) inset, 0 16px 40px rgba(0,0,0,.35);
   position:relative;
   overflow:hidden;
 }
@@ -90,7 +126,7 @@
   position:absolute; inset:0;
   background:
     radial-gradient(900px 220px at 10% 20%, rgba(251,113,133,.16), transparent 60%),
-    radial-gradient(900px 220px at 90% 30%, rgba(139,92,246,.12), transparent 55%);
+    radial-gradient(900px 220px at 90% 30%, rgba(34,211,238,.12), transparent 55%);
   pointer-events:none;
 }
 .countdown-top{
@@ -136,7 +172,7 @@
 }
 .tcell{
   background: rgba(16,18,42,.55);
-  border: 1px solid rgba(139,92,246,.18);
+  border: 1px solid rgba(34,211,238,.18);
   border-radius: 14px;
   padding: 12px 12px 10px;
   text-align:center;
@@ -146,7 +182,7 @@
   font-weight:900;
   letter-spacing:.06em;
   font-size: clamp(22px, 3.8vw, 34px);
-  text-shadow: 0 0 14px rgba(139,92,246,.20);
+  text-shadow: 0 0 14px rgba(34,211,238,.20);
 }
 .tlab{
   margin-top:4px;
@@ -163,11 +199,11 @@
   padding: 11px 14px; border-radius: 12px;
   font-weight:800;
   border: 1px solid rgba(255,255,255,.10);
-  background: linear-gradient(90deg, rgba(139,92,246,.24), rgba(139,92,246,.18));
+  background: linear-gradient(90deg, rgba(139,92,246,.24), rgba(34,211,238,.18));
   box-shadow: 0 10px 26px rgba(0,0,0,.35);
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.btn-neo:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.45); border-color: rgba(139,92,246,.35); }
+.btn-neo:hover{ transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0,0,0,.45); border-color: rgba(34,211,238,.35); }
 .btn-ghost{
   display:inline-flex; align-items:center; gap:10px;
   padding: 11px 14px; border-radius: 12px;
@@ -177,7 +213,7 @@
   background: rgba(0,0,0,.20);
   transition: transform .15s ease, border-color .15s ease;
 }
-.btn-ghost:hover{ transform: translateY(-1px); border-color: rgba(139,92,246,.45); }
+.btn-ghost:hover{ transform: translateY(-1px); border-color: rgba(34,211,238,.45); }
 
 /* cards grid */
 .grid{
@@ -203,7 +239,7 @@
   position:absolute; inset:0;
   border-radius: 16px;
   padding:1px;
-  background: linear-gradient(135deg, rgba(139,92,246,.55), rgba(139,92,246,.35), rgba(139,92,246,.12));
+  background: linear-gradient(135deg, rgba(139,92,246,.55), rgba(34,211,238,.35), rgba(139,92,246,.12));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -242,7 +278,7 @@
   border-radius: 14px;
   padding: 12px 12px 10px;
   background: rgba(0,0,0,.18);
-  border: 1px solid rgba(139,92,246,.16);
+  border: 1px solid rgba(34,211,238,.16);
 }
 .pbox .ptop{
   display:flex; align-items:center; justify-content:space-between; gap:10px;
@@ -254,11 +290,19 @@
   text-transform:uppercase;
 }
 .amount{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","CourierNew", monospace;
   font-weight:900;
   color: var(--ink);
 }
 .pnote{ color: var(--mut); font-size:.9rem; }
+
+/* rules */
+.rulelist{ margin: 0; padding-left: 18px; }
+.rulelist li{ margin: 8px 0; }
+.rulelist li b{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  letter-spacing:.04em;
+}
 
 .footerstrip{
   display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
@@ -275,44 +319,52 @@
 }
 </style>
 
-<div class="container polypwn-wrap">
+<div class="container polypwn-wrap" id="polypwn-root">
+  <!-- cG9seWN5YmVye2ZyNHBwM19tMDFfajNfN18zbXAwMTUwbm4zfQ== -->
   <div class="hero">
-    <span id="polypwn-kicker" class="lab-badge" style="margin-bottom:8px;"></span>
+    <div class="kicker">
+      <div class="kicker-left"><span class="dot"></span><span>SECTOR-7 | CLEARANCE LEVEL: AUTHENTICATED</span></div>
+      <div class="lang" aria-label="Language toggle">
+        <button id="btn-fr" class="active" type="button">FR</button>
+        <button id="btn-en" type="button">EN</button>
+      </div>
+    </div>
 
     <div class="title">PolyPwn CTF 2026</div>
-    <div class="subtitle">
+    <div class="subtitle" data-i18n="subtitle">
       Compétition de cybersécurité en présentiel, organisée par PolyCyber à Polytechnique Montréal.
     </div>
 
     <div class="badges">
-      <span class="badge-pill"><span class="chip"></span>21 mars 2026</span>
-      <span class="badge-pill"><span class="chip"></span>Atrium Lassonde</span>
-      <span class="badge-pill"><span class="chip"></span>Thème: laboratoire secret</span>
-      <span class="badge-pill"><span class="chip"></span>Jeopardy CTF</span>
+      <span class="badge-pill"><span class="chip"></span><span data-i18n="badge_date">21 mars 2026</span></span>
+      <span class="badge-pill"><span class="chip"></span><span data-i18n="badge_place">Atrium Lassonde</span></span>
+      <span class="badge-pill"><span class="chip"></span><span data-i18n="badge_format">Jeopardy CTF</span></span>
     </div>
 
     <div class="countdown-hero">
       <div class="countdown-top">
-        <div class="alert"><span class="pulse"></span>COMPTE À REBOURS • ACCÈS LIMITÉ • samedi 21 mars 2026 9h - 21h</div>
-        
+        <div class="alert">
+          <span class="pulse"></span>
+          <span data-i18n="countdown_banner">COMPTE À REBOURS • ACCÈS LIMITÉ • samedi 21 mars 2026 8h - 22h</span>
+        </div>
       </div>
 
-      <div class="timer" aria-label="Compte à rebours PolyPwn">
-        <div class="tcell"><div class="tnum" id="cd-days">--</div><div class="tlab">Jours</div></div>
-        <div class="tcell"><div class="tnum" id="cd-hours">--</div><div class="tlab">Heures</div></div>
-        <div class="tcell"><div class="tnum" id="cd-mins">--</div><div class="tlab">Minutes</div></div>
-        <div class="tcell"><div class="tnum" id="cd-secs">--</div><div class="tlab">Secondes</div></div>
+      <div class="timer" aria-label="Countdown">
+        <div class="tcell"><div class="tnum" id="cd-days">--</div><div class="tlab" data-i18n="cd_days">Jours</div></div>
+        <div class="tcell"><div class="tnum" id="cd-hours">--</div><div class="tlab" data-i18n="cd_hours">Heures</div></div>
+        <div class="tcell"><div class="tnum" id="cd-mins">--</div><div class="tlab" data-i18n="cd_mins">Minutes</div></div>
+        <div class="tcell"><div class="tnum" id="cd-secs">--</div><div class="tlab" data-i18n="cd_secs">Secondes</div></div>
       </div>
     </div>
 
     <div class="cta">
-      <a class="btn-neo" href="https://www.zeffy.com/fr-CA/ticketing/polypwn-ctf--2026" target="_blank" rel="noopener">
+      <a class="btn-neo" href="https://www.zeffy.com/fr-CA/ticketing/polypwn-ctf--2026" target="_blank" rel="noopener" data-i18n="cta_soldout">
         Inscriptions SOLD OUT
       </a>
-      <a class="btn-ghost" href="https://discord.gg/ZcYnS3GZE6" target="_blank" rel="noopener">
+      <a class="btn-ghost" href="https://discord.gg/ZcYnS3GZE6" target="_blank" rel="noopener" data-i18n="cta_discord">
         Lien Discord
       </a>
-      <a class="btn-ghost" href="https://pwn.polycyber.io/" target="_blank" rel="noopener">
+      <a class="btn-ghost" href="https://pwn.polycyber.io/" target="_blank" rel="noopener" data-i18n="cta_official">
         Site officiel
       </a>
     </div>
@@ -321,101 +373,145 @@
   <div class="grid">
 
     <div class="cardx">
-      <h3>Infos pratiques</h3>
+      <h3 data-i18n="practical_title">Infos pratiques</h3>
       <div class="meta">
-        <span class="tag">Capacité: ~200</span>
-        <span class="tag">Ouvert à tous</span>
-        <span class="tag">Prix réservés aux étudiants</span>
+        <span class="tag" data-i18n="tag_capacity">Capacité: ~200</span>
+        <span class="tag" data-i18n="tag_open">Ouvert à tous</span>
+        <span class="tag" data-i18n="tag_student_prizes">Prix réservés aux étudiants</span>
       </div>
       <ul class="ulx">
-        <li>Date: samedi 21 mars 2026 (samedi 21 mars 2026 9h - 21h)</li>
-        <li>Lieu: atrium du pavillon Lassonde, Polytechnique Montréal</li>
-        <li>Format: Jeopardy CTF, en équipe</li>
-        <li>Équipes: 3 ou 4 personnes</li>
-        <li>Niveau: débutant à intermédiaire</li>
-        <li>Nourriture offerte pendant la compétition</li>
+        <li data-i18n="practical_date">Date: samedi 21 mars 2026 8h - 22h</li>
+        <li data-i18n="practical_place">Lieu: atrium du pavillon Lassonde, Polytechnique Montréal</li>
+        <li data-i18n="practical_format">Format: Jeopardy CTF, en équipe</li>
+        <li data-i18n="practical_teams">Équipes: 3 ou 4 personnes</li>
+        <li data-i18n="practical_level">Niveau: débutant à intermédiaire</li>
+        <li data-i18n="practical_food">Nourriture offerte pendant la compétition</li>
       </ul>
-      <div class="smallmut" style="margin-top:10px;">
-        
-      </div>
     </div>
 
     <div class="cardx">
-      <h3>Prix</h3>
+      <h3 data-i18n="prizes_title">Prix</h3>
 
       <div class="prize-grid">
         <div class="pbox">
-          <div class="ptop"><div class="rank">1re place</div><div class="amount">2&nbsp;000&nbsp;$</div></div>
-          <div class="pnote">Podium</div>
+          <div class="ptop"><div class="rank" data-i18n="p1_rank">1re place</div><div class="amount">2 000 $</div></div>
+          <div class="pnote" data-i18n="p_podium">Podium</div>
         </div>
         <div class="pbox">
-          <div class="ptop"><div class="rank">2e place</div><div class="amount">1&nbsp;500&nbsp;$</div></div>
-          <div class="pnote">Podium</div>
+          <div class="ptop"><div class="rank" data-i18n="p2_rank">2e place</div><div class="amount">1 500 $</div></div>
+          <div class="pnote" data-i18n="p_podium">Podium</div>
         </div>
         <div class="pbox">
-          <div class="ptop"><div class="rank">3e place</div><div class="amount">1&nbsp;000&nbsp;$</div></div>
-          <div class="pnote">Podium</div>
+          <div class="ptop"><div class="rank" data-i18n="p3_rank">3e place</div><div class="amount">1 000 $</div></div>
+          <div class="pnote" data-i18n="p_podium">Podium</div>
         </div>
         <div class="pbox">
-          <div class="ptop"><div class="rank">Relève</div><div class="amount">400&nbsp;$</div></div>
-          <div class="pnote">Prix dédié</div>
+          <div class="ptop"><div class="rank" data-i18n="p_rel">Relève</div><div class="amount">400 $</div></div>
+          <div class="pnote" data-i18n="p_dedicated">Prix dédié</div>
         </div>
         <div class="pbox">
-          <div class="ptop"><div class="rank">Cadets</div><div class="amount">200&nbsp;$</div></div>
-          <div class="pnote">Prix dédié</div>
+          <div class="ptop"><div class="rank" data-i18n="p_cadets">Cadets</div><div class="amount">200 $</div></div>
+          <div class="pnote" data-i18n="p_dedicated">Prix dédié</div>
         </div>
         <div class="pbox">
-          <div class="ptop"><div class="rank">Total podium</div><div class="amount">4&nbsp;500&nbsp;$</div></div>
-          <div class="pnote">1re + 2e + 3e</div>
+          <div class="ptop"><div class="rank" data-i18n="p_total">Total podium</div><div class="amount">4 500 $</div></div>
+          <div class="pnote" data-i18n="p_total_note">1re + 2e + 3e</div>
+        </div>
+
+        <div class="pbox">
+          <div class="ptop"><div class="rank" data-i18n="p_propolys">Entrepreneuriat Propolys</div><div class="amount">400 $</div></div>
+          <div class="pnote" data-i18n="p_dedicated">Prix dédié</div>
+        </div>
+        <div class="pbox">
+          <div class="ptop"><div class="rank" data-i18n="p_participation">Prix de participation</div><div class="amount">HTB</div></div>
+          <div class="pnote" data-i18n="p_participation_note">Vouchers Hack The Box</div>
         </div>
       </div>
 
-      <div class="smallmut" style="margin-top:10px;">
+      <div class="smallmut" style="margin-top:10px;" data-i18n="prize_note">
         Les prix annoncés sont généralement réservés aux équipes 100% étudiantes.
       </div>
 
-      <hr style="border:0;height:1px;background:linear-gradient(90deg,transparent,rgba(139,92,246,.25),rgba(139,92,246,.25),transparent);margin:12px 0;" />
+      <div class="smallmut" style="margin-top:8px;" data-i18n="participation_detail">
+        Vouchers HackTheBox: 4x 1 Year VIP+, 4x 6 Months VIP+, 4x 1 Month VIP+
+      </div>
 
-      <h3 style="margin-top:0;">Inscription (SOLD OUT)</h3>
+      <hr style="border:0;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.25),rgba(139,92,246,.25),transparent);margin:12px 0;" />
+
+      <h3 style="margin-top:0;" data-i18n="signup_title">Inscription (SOLD OUT)</h3>
       <ul class="ulx">
-        <li>Billets gratuits (inscription individuelle)</li>
-        <li>Les équipes se constituent plus tard</li>
-        <li>Un justificatif peut être demandé en cas de prix</li>
-        <li>Non-étudiants: inscription possible, non éligible aux prix</li>
+        <li data-i18n="signup_free">Billets gratuits (inscription individuelle)</li>
+        <li data-i18n="signup_teams">Les équipes se constituent plus tard</li>
+        <li data-i18n="signup_proof">Un justificatif peut être demandé en cas de prix</li>
+        <li data-i18n="signup_nonstudent">Non-étudiants: inscription possible, non éligible aux prix</li>
       </ul>
 
       <div style="margin-top:12px;">
-        <a class="btn-neo" href="https://www.zeffy.com/fr-CA/ticketing/polypwn-ctf--2026" target="_blank" rel="noopener">
+        <a class="btn-neo" href="https://www.zeffy.com/fr-CA/ticketing/polypwn-ctf--2026" target="_blank" rel="noopener" data-i18n="signup_waitlist">
           Salle d'attente
         </a>
       </div>
     </div>
 
     <div class="cardx">
-      <h3>Thème</h3>
-      <div class="meta">
-        <span class="tag">Laboratoire secret</span>
+      <h3 data-i18n="theme_title">Thème</h3>
+      
+      <div class="smallmut" data-i18n="theme_desc">
+        Un univers inspiré d'un laboratoire secret.
       </div>
-      <div class="smallmut">
-        Un univers inspiré d'un laboratore secret.
+      <div class="mono" style="margin-top:10px;">
+        LABORATORY INTERFACE v2.1.5
       </div>
     </div>
 
     <div class="cardx">
-      <h3>À prévoir</h3>
+      <h3 data-i18n="prep_title">À prévoir</h3>
       <ul class="ulx">
-        <li>Ordinateur portable + chargeur</li>
-        <li>Esprit d'équipe</li>
+        <li data-i18n="prep_laptop">Ordinateur portable + chargeur</li>
+        <li data-i18n="prep_team">Esprit d’équipe</li>
       </ul>
-      <div class="smallmut" style="margin-top:10px;">
-        
+    </div>
+
+    <div class="cardx" style="grid-column: 1 / -1;">
+      <h3 data-i18n="rules_title">Règles</h3>
+
+      <div class="smallmut" style="margin-bottom:10px;" data-i18n="rules_sub">
+        Respect, fair play, et sécurité de l’infrastructure.
       </div>
+
+      <ol class="rulelist" id="rules-fr">
+        <li><b>Réseau</b> - Aucun partage de connexion, vous devez passer par le Wi-Fi du PolyPwn.</li>
+        <li><b>Confidentialité</b> - Ne partagez aucun flag, solution ou indice pendant la compétition.</li>
+        <li><b>CTFd</b> - N’effectuez aucun brute-force de flag sur CTFd.</li>
+        <li><b>Infrastructure</b> - N’attaquez pas et n’interférez pas avec l’infrastructure. Tout manquement entraîne une disqualification immédiate de l’équipe.</li>
+        <li><b>IA</b> - L’utilisation de l’IA est tolérée, sauf systèmes abusifs (ex: AI-swarm). Tout abus signalé peut entraîner une disqualification.</li>
+        <li><b>Vérification</b> - Si demandé, soyez prêts à démontrer et expliquer votre solution en détail.</li>
+        <li><b>Automatisation</b> - Outils automatisés autorisés seulement si mentionnés dans la description du challenge.</li>
+        <li><b>Doute</b> - Si vous n’êtes pas certains qu’une action est autorisée, contactez les organisateurs sur Discord avant de procéder.</li>
+        <li><b>Support</b> - Signalez tout problème d’infrastructure ou de challenge via 🆘-support sur Discord en ouvrant un billet.</li>
+        <li><b>Aide</b> - Rendez-vous au comptoir d’aide pour questions (intro, outils, problèmes techniques).</li>
+        <li><b>Respect</b> - Respectez les autres participants, les partenaires et les organisateurs.</li>
+      </ol>
+
+      <ol class="rulelist" id="rules-en" style="display:none;">
+        <li><b>Network</b> - No connection sharing; use the official PolyPwn Wi-Fi.</li>
+        <li><b>Confidentiality</b> - Do not share any flags, solutions, or hints during the competition.</li>
+        <li><b>CTFd</b> - Do not brute-force flags on CTFd.</li>
+        <li><b>Infrastructure</b> - Do not attack or interfere with the infrastructure. Any breach results in immediate team disqualification.</li>
+        <li><b>AI</b> - AI usage is allowed, except abusive systems (e.g., AI-swarm). Reported abuse may lead to disqualification.</li>
+        <li><b>Verification</b> - If requested, be ready to demonstrate and explain your solution in detail.</li>
+        <li><b>Automation</b> - Automated tools are allowed only if explicitly stated in the challenge description.</li>
+        <li><b>Unclear</b> - If you are unsure whether an action is allowed, contact the organizers on Discord before proceeding.</li>
+        <li><b>Support</b> - Report infrastructure or challenge issues via 🆘-support on Discord by opening a ticket.</li>
+        <li><b>Help desk</b> - Use the help desk for intro challenges, tooling questions, or technical issues.</li>
+        <li><b>Respect</b> - Respect other participants, partners, and organizers.</li>
+      </ol>
     </div>
 
   </div>
 
   <div class="footerstrip">
-    <div class="mono">CONTACT: contact@polycyber.io       |    SPONSORING: sponsor@polycyber.io</div>
+    <div class="mono">CONTACT: contact@polycyber.io | SPONSORING: sponsor@polycyber.io</div>
     <div><a href="https://pwn.polycyber.io/" target="_blank" rel="noopener">pwn.polycyber.io</a></div>
   </div>
 </div>
@@ -423,15 +519,13 @@
 <script>
 (function () {
   try {
-    
-    var target = new Date("2026-03-21T09:00:00-04:00").getTime();
+    // Countdown target: 21 March 2026 08:00 Montréal
+    var target = new Date("2026-03-21T08:00:00-04:00").getTime();
 
     var dEl = document.getElementById("cd-days");
     var hEl = document.getElementById("cd-hours");
     var mEl = document.getElementById("cd-mins");
     var sEl = document.getElementById("cd-secs");
-
-    if (!dEl || !hEl || !mEl || !sEl) return;
 
     function pad(n){ return (n < 10 ? "0" : "") + n; }
 
@@ -460,15 +554,146 @@
       setTimeout(tick, 250);
     }
 
-    tick();
+    if (dEl && hEl && mEl && sEl) tick();
 
-    // Clearance badge
-    var kicker = document.getElementById("polypwn-kicker");
-    if (kicker) {
-      var isAuth = window.init && window.init.userName;
-      kicker.className = "lab-badge " + (isAuth ? "clearance-high" : "clearance-low");
-      kicker.textContent = "SECTOR-7 | CLEARANCE LEVEL: " + (isAuth ? "AUTHENTICATED" : "GUEST");
+    // Simple i18n toggle (FR/EN) + rules switch
+    var dict = {
+      fr: {
+        subtitle: "Compétition de cybersécurité en présentiel, organisée par PolyCyber à Polytechnique Montréal.",
+        badge_date: "21 mars 2026",
+        badge_place: "Atrium Lassonde",
+        badge_format: "Jeopardy CTF",
+        countdown_banner: "COMPTE À REBOURS • ACCÈS LIMITÉ • samedi 21 mars 2026 8h - 22h",
+        cd_days: "Jours",
+        cd_hours: "Heures",
+        cd_mins: "Minutes",
+        cd_secs: "Secondes",
+        cta_soldout: "Inscriptions SOLD OUT",
+        cta_discord: "Lien Discord",
+        cta_official: "Site officiel",
+        practical_title: "Infos pratiques",
+        tag_capacity: "Capacité: ~200",
+        tag_open: "Ouvert à tous",
+        tag_student_prizes: "Prix réservés aux étudiants",
+        practical_date: "Date: samedi 21 mars 2026 8h - 22h",
+        practical_place: "Lieu: atrium du pavillon Lassonde, Polytechnique Montréal",
+        practical_format: "Format: Jeopardy CTF, en équipe",
+        practical_teams: "Équipes: 3 ou 4 personnes",
+        practical_level: "Niveau: débutant à intermédiaire",
+        practical_food: "Nourriture offerte pendant la compétition",
+        prizes_title: "Prix",
+        p1_rank: "1re place",
+        p2_rank: "2e place",
+        p3_rank: "3e place",
+        p_rel: "Relève",
+        p_cadets: "Cadets",
+        p_total: "Total podium",
+        p_podium: "Podium",
+        p_dedicated: "Prix dédié",
+        p_total_note: "1re + 2e + 3e",
+        p_propolys: "Entrepreneuriat Propolys",
+        p_participation: "Prix de participation",
+        p_participation_note: "Vouchers Hack The Box",
+        prize_note: "Les prix annoncés sont généralement réservés aux équipes 100% étudiantes.",
+        participation_detail: "Vouchers HackTheBox: 4x 1 Year VIP+, 4x 6 Months VIP+, 4x 1 Month VIP+",
+        signup_title: "Inscription (SOLD OUT)",
+        signup_free: "Billets gratuits (inscription individuelle)",
+        signup_teams: "Les équipes se constituent plus tard",
+        signup_proof: "Un justificatif peut être demandé en cas de prix",
+        signup_nonstudent: "Non-étudiants: inscription possible, non éligible aux prix",
+        signup_waitlist: "Salle d'attente",
+        theme_title: "Thème",
+        theme_desc: "Un univers inspiré d'un laboratoire secret.",
+        prep_title: "À prévoir",
+        prep_laptop: "Ordinateur portable + chargeur",
+        prep_team: "Esprit d’équipe",
+        rules_title: "Règles",
+        rules_sub: "Respect, fair play, et sécurité de l’infrastructure."
+      },
+      en: {
+        subtitle: "In-person cybersecurity competition organized by PolyCyber at Polytechnique Montréal.",
+        badge_date: "March 21, 2026",
+        badge_place: "Lassonde Atrium",
+        badge_format: "Jeopardy CTF",
+        countdown_banner: "COUNTDOWN • LIMITED ACCESS • Sat March 21, 2026 8am - 10pm",
+        cd_days: "Days",
+        cd_hours: "Hours",
+        cd_mins: "Minutes",
+        cd_secs: "Seconds",
+        cta_soldout: "Registrations SOLD OUT",
+        cta_discord: "Discord link",
+        cta_official: "Official site",
+        practical_title: "Practical info",
+        tag_capacity: "Capacity: ~200",
+        tag_open: "Open to everyone",
+        tag_student_prizes: "Prizes for students",
+        practical_date: "Date: Sat March 21, 2026 8am - 10pm",
+        practical_place: "Location: Lassonde Pavilion Atrium, Polytechnique Montréal",
+        practical_format: "Format: Team Jeopardy CTF",
+        practical_teams: "Teams: 3 or 4 people",
+        practical_level: "Level: beginner to intermediate",
+        practical_food: "Food provided during the competition",
+        prizes_title: "Prizes",
+        p1_rank: "1st place",
+        p2_rank: "2nd place",
+        p3_rank: "3rd place",
+        p_rel: "Rising talent",
+        p_cadets: "Cadets",
+        p_total: "Podium total",
+        p_podium: "Podium",
+        p_dedicated: "Special prize",
+        p_total_note: "1st + 2nd + 3rd",
+        p_propolys: "Propolys Entrepreneurship",
+        p_participation: "Participation prize",
+        p_participation_note: "Hack The Box vouchers",
+        prize_note: "Announced prizes are generally for 100% student teams.",
+        participation_detail: "HackTheBox vouchers: 4x 1 Year VIP+, 4x 6 Months VIP+, 4x 1 Month VIP+",
+        signup_title: "Registration (SOLD OUT)",
+        signup_free: "Free tickets (individual registration)",
+        signup_teams: "Teams can be formed later",
+        signup_proof: "Student proof may be requested for prizes",
+        signup_nonstudent: "Non-students: allowed to register, not eligible for prizes",
+        signup_waitlist: "Waitlist",
+        theme_title: "Theme",
+        theme_desc: "A universe inspired by a secret laboratory.",
+        prep_title: "What to bring",
+        prep_laptop: "Laptop + charger",
+        prep_team: "Team spirit",
+        rules_title: "Rules",
+        rules_sub: "Respect, fair play, and infrastructure safety."
+      }
+    };
+
+    function applyLang(lang){
+      var m = dict[lang] || dict.fr;
+      document.querySelectorAll("[data-i18n]").forEach(function(el){
+        var k = el.getAttribute("data-i18n");
+        if (m[k]) el.textContent = m[k];
+      });
+
+      var frBtn = document.getElementById("btn-fr");
+      var enBtn = document.getElementById("btn-en");
+      if (frBtn && enBtn){
+        frBtn.classList.toggle("active", lang === "fr");
+        enBtn.classList.toggle("active", lang === "en");
+      }
+
+      var rf = document.getElementById("rules-fr");
+      var re = document.getElementById("rules-en");
+      if (rf && re){
+        rf.style.display = (lang === "fr") ? "" : "none";
+        re.style.display = (lang === "en") ? "" : "none";
+      }
     }
+
+    var frBtn = document.getElementById("btn-fr");
+    var enBtn = document.getElementById("btn-en");
+    if (frBtn) frBtn.addEventListener("click", function(){ applyLang("fr"); });
+    if (enBtn) enBtn.addEventListener("click", function(){ applyLang("en"); });
+
+    // default language: FR
+    applyLang("fr");
+
   } catch (e) {}
 })();
 </script>
